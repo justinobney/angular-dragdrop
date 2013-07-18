@@ -246,6 +246,12 @@ var jqyoui = angular.module('ngDragDrop', []).service('ngDragDropService', ['$ti
                 },
                 drop: function(event, ui) {
                   ngDragDropService.invokeDrop(angular.element(ui.draggable), angular.element(this), event, ui);
+                },
+                helper: function (e) {
+                        var el = $(this);
+                        var clone = el.clone();
+                        clone.width(el.width()).css('zIndex', 99);
+                        return clone.appendTo('body');
                 }
               });
           } else {
